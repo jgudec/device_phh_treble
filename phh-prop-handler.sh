@@ -248,3 +248,17 @@ if [ "$1" == "persist.bluetooth.system_audio_hal.enabled" ]; then
     restartAudio
     exit
 fi
+
+if [ "$1" == "persist.sys.phh.securize" ];then
+    if [[ "$prop_value" != "true" && "$prop_value" != "false" ]]; then
+        exit 1
+    fi
+
+    if [[ "$prop_value" == "true" ]]; then
+        mkdir /metadata/phh
+        touch /metadata/phh/secure
+    else
+        rm /metadata/phh/secure
+    fi
+    exit
+fi
