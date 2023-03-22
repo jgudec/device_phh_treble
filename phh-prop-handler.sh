@@ -255,10 +255,13 @@ if [ "$1" == "persist.sys.phh.securize" ];then
     fi
 
     if [[ "$prop_value" == "true" ]]; then
-        mkdir /metadata/phh
+        mkdir -p /metadata/phh
         touch /metadata/phh/secure
+        mkdir -p /data/adb/phh
+        touch /data/adb/phh/secure
     else
         rm /metadata/phh/secure
+        rm /data/adb/phh/secure
     fi
     exit
 fi
