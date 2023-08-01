@@ -964,6 +964,19 @@ if getprop ro.vendor.build.fingerprint |grep -qiE '^samsung/';then
     setprop persist.sys.phh.fod.samsung true
 fi
 
+if getprop ro.boot.hardware.sku | grep -q -e fuxi -e nuwa; then
+    resetprop_phh ro.surface_flinger.set_idle_timer_ms 1000
+
+    resetprop_phh ro.surface_flinger.set_touch_timer_ms 800
+
+    resetprop_phh ro.surface_flinger.set_display_power_timer_ms 4000
+
+    resetprop_phh debug.sf.frame_rate_multiple_threshold 120
+
+    resetprop_phh persist.sys.sf.hs_mode 0
+
+fi
+
 if getprop ro.vendor.build.fingerprint | grep -q -e samsung/o1s -e samsung/t2s -e samsung/p3s; then
     setprop persist.sys.phh.ultrasonic_udfps true
 fi

@@ -1,0 +1,27 @@
+type vendor_sysfs_displayfeature, domain, mlstrustedobject;
+allow platform_app vendor_sysfs_displayfeature:dir search;
+
+allow platform_app vendor_sysfs_displayfeature:file write;
+allow platform_app vendor_sysfs_displayfeature:file open;
+allow platform_app vendor_sysfs_displayfeature:file getattr;
+
+type vendor_hal_usb_qti, domain;
+type vendor_sysfs_qcom_battery, property_type;
+allow vendor_hal_usb_qti vendor_sysfs_qcom_battery:file { read open };
+
+allow nfc system_data_file:file { open write };
+type vendor_hal_perf_default, domain;
+type vendor_shsusrd, property_type;
+allow vendor_hal_perf_default vendor_shsusrd:dir search;
+type vendor_ssgtzd, domain;
+allow vendor_ssgtzd servicemanager:binder call;
+type vendor_qmipriod, domain;
+type vendor_qmipriod_data_file, property_type;
+allow vendor_qmipriod vendor_qmipriod_data_file:dir search;
+
+allow vendor_hal_perf_default hal_graphics_composer_default:file read;
+type sysfs_tp_fodstatus, property_type;
+allow shell sysfs_tp_fodstatus:file getattr;
+
+allow shell vendor_sysfs_displayfeature:dir search;
+
